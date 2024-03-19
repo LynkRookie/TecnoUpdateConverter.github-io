@@ -1,6 +1,9 @@
 body {
     font-family: Arial, sans-serif;
 }
+.cuerpo{
+    color:white
+}
 
 .container {
     max-width: 500px;

@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="es" style="background: linear-gradient(90deg, rgb(178 140 140) 6%, rgb(35 182 169 / 95%) 89%);">
-<head>
+<html lang="es" style="background: linear-gradient(90deg, rgb(178 140 140) 6%, rgb(35 182 169 / 95%) 89%);"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TecnoUpdate Converter</title>
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+  <link class="logo"rel="website icon" type="png" href="—Pngtree—desktop pc computer des (1).png">
+
+<style type="text/css" id="operaUserStyle"></style></head>
+<body class="cuerpo">
     <div class="container">
-        <h2>Convertidor de Video</h2>
+        <h2>Convertidor de Video TecnoUpdate</h2>
         <form id="uploadForm" action="convert.php" method="post" enctype="multipart/form-data">
             <label for="file">Selecciona un archivo de video:</label><br>
             <input type="file" id="file" name="file" accept="video/*"><br><br>
@@ -25,17 +25,18 @@
         </form>
         <div id="successModal" class="modal">
             <div class="modal-content">
-                <span class="close">&times;</span>
+                <span class="close">×</span>
                 <p>Archivo convertido y descargado correctamente.<br>Ubicación: <span id="downloadLocation"></span></p>
             </div>
         </div>
         <div id="errorModal" class="modal">
             <div class="modal-content">
-                <span class="close">&times;</span>
+                <span class="close">×</span>
                 <p>No se puede descargar el archivo. Por favor, inténtalo de nuevo más tarde.</p>
             </div>
         </div>
     </div>
     <script src="scripts.js"></script>
-</body>
-</html>
+
+
+</body></html>
