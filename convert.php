@@ -1,6 +1,6 @@
 <?php
 // Ruta completa de la carpeta de destino en el servidor web
-$target_dir = "/downloads/";
+$target_dir = "/downloads/carpeta_de_descarga_de_videos/";
 
 // Verificar si se ha enviado un archivo
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["file"])) {
