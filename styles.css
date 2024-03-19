@@ -1,8 +1,9 @@
 body {
     font-family: Arial, sans-serif;
+    background: rgb(241, 235, 235);
 }
 .cuerpo{
-    background: rgb(28, 23, 23);
+    background: rgb(241, 235, 235);
     /* border-right: 102px; */
     padding: 0px;
     padding-right:1px;
