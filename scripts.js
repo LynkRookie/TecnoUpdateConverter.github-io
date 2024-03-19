@@ -1,67 +1,67 @@
-// Función para mostrar ventana modal de éxito
-function showSuccessModal(location) {
-    var modal = document.getElementById("successModal");
-    var downloadLocation = document.getElementById("downloadLocation");
-    downloadLocation.innerText = location;
-    modal.style.display = "block";
+body {
+    font-family: Arial, sans-serif;
 }
 
-// Función para mostrar ventana modal de error
-function showErrorModal() {
-    var modal = document.getElementById("errorModal");
-    modal.style.display = "block";
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-// Función para cerrar ventanas modales
-function closeModal() {
-    var modals = document.getElementsByClassName("modal");
-    for (var i = 0; i < modals.length; i++) {
-        modals[i].style.display = "none";
-    }
+.progress-container {
+    width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-top: 20px;
+    position: relative; /* Necesario para posicionar la barra de progreso */
 }
 
-// Evento para cerrar ventanas modales al hacer clic en la "X"
-var closeButtons = document.getElementsByClassName("close");
-for (var i = 0; i < closeButtons.length; i++) {
-    closeButtons[i].addEventListener("click", closeModal);
+.progress-bar {
+    width: 0%;
+    height: 30px;
+    background-color: #4caf50;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    border-radius: 5px;
+    transition: width 0.3s ease; /* Transición suave para la animación */
 }
 
-// Evento para cerrar ventanas modales al hacer clic fuera de ellas
-window.addEventListener("click", function(event) {
-    if (event.target.classList.contains("modal")) {
-        closeModal();
-    }
-});
+/* Estilo para la ventana modal de descarga */
+.modal {
+    display: none; /* Por defecto oculto */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: linear-gradient(to bottom right, #3498db, #000); /* Fondo con degradado celeste a negro */
+}
 
-// Envío del formulario
-document.getElementById("uploadForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Evita el envío del formulario por defecto
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* Ajuste del margen superior para centrar mejor */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%; /* Ancho máximo */
+    text-align: center; /* Alineación del contenido */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Sombra */
+}
 
-    var formData = new FormData(this); // Obtiene los datos del formulario
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
 
-    // Realiza una petición AJAX al servidor
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "convert.php", true);
-
-    // Configura la función de progreso para actualizar la barra de progreso
-    xhr.upload.addEventListener("progress", function(e) {
-        var progressBar = document.getElementById("progressBar");
-        var progressPercent = document.getElementById("progressPercent");
-        if (e.lengthComputable) {
-            var percentComplete = (e.loaded / e.total) * 100;
-            progressBar.value = percentComplete;
-            progressPercent.innerText = percentComplete.toFixed(2) + "%";
-        }
-    });
-
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            // Si la petición es exitosa, muestra la ventana modal de éxito con la ubicación del archivo convertido
-            showSuccessModal(xhr.responseText);
-        } else {
-            // Si hay un error, muestra la ventana modal de error
-            showErrorModal();
-        }
-    };
-    xhr.send(formData);
-});
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
