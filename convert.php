@@ -1,6 +1,6 @@
 <?php
-// Ruta completa de la carpeta de destino
-$target_dir = "C:\\Users\\damia\\Downloads\\carpeta de descarga de videos\\";
+// Ruta completa de la carpeta de destino en el servidor web
+$target_dir = "/downloads/";
 
 // Verificar si se ha enviado un archivo
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["file"])) {
@@ -27,14 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["file"])) {
         // Construir el nombre de archivo de destino con el formato especificado
         $output_file = $target_dir . $original_filename . "_convertido." . $format;
 
-        // Verificar si el archivo de destino ya existe y ajustar el nombre si es necesario
-        $counter = 1;
-        while (file_exists($output_file)) {
-            $output_file = $target_dir . $original_filename . "_convertido_" . $counter . "." . $format;
-            $counter++;
-        }
-
-        if (move_uploaded_file($_FILES["file"]["tmp_name"], $output_file)) {
+        if (move_uploaded_file($_FILES["file"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . $output_file)) {
             echo $output_file; // Devolver la ruta del archivo convertido
         } else {
             echo "Error al subir el archivo o guardar el archivo convertido.";
