@@ -42,18 +42,6 @@ document.getElementById("uploadForm").addEventListener("submit", function(event)
     // Realiza una petición AJAX al servidor
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "convert.php", true);
-
-    // Configura la función de progreso para actualizar la barra de progreso
-    xhr.upload.addEventListener("progress", function(e) {
-        var progressBar = document.getElementById("progressBar");
-        var progressPercent = document.getElementById("progressPercent");
-        if (e.lengthComputable) {
-            var percentComplete = (e.loaded / e.total) * 100;
-            progressBar.value = percentComplete;
-            progressPercent.innerText = percentComplete.toFixed(2) + "%";
-        }
-    });
-
     xhr.onload = function() {
         if (xhr.status === 200) {
             // Si la petición es exitosa, muestra la ventana modal de éxito con la ubicación del archivo convertido
@@ -63,5 +51,14 @@ document.getElementById("uploadForm").addEventListener("submit", function(event)
             showErrorModal();
         }
     };
+
+    // Evento para actualizar la barra de progreso
+    xhr.upload.addEventListener("progress", function(event) {
+        var percent = (event.loaded / event.total) * 100;
+        document.getElementById("progressBar").value = percent;
+        document.getElementById("progressPercent").innerText = percent.toFixed(2) + "%";
+    });
+
     xhr.send(formData);
 });
+s
