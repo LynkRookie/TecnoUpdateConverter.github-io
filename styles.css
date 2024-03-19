@@ -1,10 +1,19 @@
+
 body {
     font-family: Arial, sans-serif;
 }
 .cuerpo{
-    color:white
+    background: white;
+    /* border-right: 102px; */
+    padding: 0px;
+    padding-right:1px;
+    padding-left: 0px;
+    position: relative;
+    margin-left: 460px;
+    margin-right: 500px;
+    border-radius: 7px;
+    margin-bottom: 405px;
 }
-
 .container {
     max-width: 500px;
     margin: 50px auto;
